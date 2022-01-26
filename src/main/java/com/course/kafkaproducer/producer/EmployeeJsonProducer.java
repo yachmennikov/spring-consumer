@@ -18,6 +18,7 @@ public class EmployeeJsonProducer {
 
     public void sendMessage(Employee emp) throws JsonProcessingException {
         String json = objectMapper.writeValueAsString(emp);
+        System.out.println(json);
         kafkaTemplate.send("t_employee", json);
     }
 }
