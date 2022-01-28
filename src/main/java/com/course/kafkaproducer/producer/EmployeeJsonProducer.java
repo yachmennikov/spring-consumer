@@ -14,7 +14,8 @@ public class EmployeeJsonProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public void sendMessage(Employee emp) throws JsonProcessingException {
         String json = objectMapper.writeValueAsString(emp);

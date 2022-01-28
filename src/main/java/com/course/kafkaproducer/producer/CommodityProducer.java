@@ -13,7 +13,8 @@ public class CommodityProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public void sendMessage(Commodity commodity) throws JsonProcessingException {
         var json = objectMapper.writeValueAsString(commodity);
