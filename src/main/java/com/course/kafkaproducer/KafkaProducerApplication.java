@@ -1,7 +1,9 @@
 package com.course.kafkaproducer;
 
 import com.course.kafkaproducer.entity.FoodOrder;
+import com.course.kafkaproducer.entity.SimpleNumber;
 import com.course.kafkaproducer.producer.FoodOrderProducer;
+import com.course.kafkaproducer.producer.SimpleNumberProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +16,9 @@ public class KafkaProducerApplication implements CommandLineRunner {
 
 	@Autowired
 	private FoodOrderProducer foodOrderProducer;
+
+	@Autowired
+	private SimpleNumberProducer simpleNumberProducer;
 
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaProducerApplication.class, args);
@@ -28,5 +33,11 @@ public class KafkaProducerApplication implements CommandLineRunner {
 		foodOrderProducer.sendMessage(chickenOrder);
 		foodOrderProducer.sendMessage(fishOrder);
 		foodOrderProducer.sendMessage(pizzaOrder);
+
+		// ..............simple numbers...............
+		for (int i = 100; i < 103; i++) {
+			var simpleNumber = new SimpleNumber(i);
+			simpleNumberProducer.sendMessage(simpleNumber);
+		}
 	}
 }
