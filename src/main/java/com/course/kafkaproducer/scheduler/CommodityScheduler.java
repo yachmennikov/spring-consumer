@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class CommodityScheduler {
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
     private CommodityProducer producer;
